@@ -14,6 +14,8 @@ try:
         print("GPU usage {:2.1%}".format(gpu_usage / 100), end="\r")
         time.sleep(0.005)
 except KeyboardInterrupt:
+    with open("values.csv", 'w') as f:
+        f.write("\n".join([str(v) for v in values]))
     print("")
-    print("captured values:")
-    print(", ".join([str(v) for v in values]))
+    print("captured " + str(len(values)) + " values.")
+    # print(", ".join([str(v) for v in values]))
